@@ -1,0 +1,45 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+   versionSpec: '12.x'
+  displayName: 'Install Node.js'
+
+- script: |
+   npm install
+   npm run build
+   npm -v
+   node -v
+  displayName: 'npm install and build'
+
+- script: |
+   wget https://s3-us-west-2.amazonaws.com/controlm-appdev/release/latest/ctm-cli.tgz
+   npm -g install ctm-cli.tgz
+   ctm -v
+  displayName: 'Environment Preparation'
+
+- script: |
+   ctm env add I2T_PreProd https://cirrocumulus.bmci2t.com:8446/automation-api Reggie Password
+   ctm env set I2T_PreProd
+   ctm session login
+  displayName: 'PreProd environment add'
+
+- script: |
+   ctm build module3.json
+   echo 'Workflow validated successfully'
+  displayName: 'Validate Workflow in PreProd'
+
+- script: |
+   ctm run module3.json azuredeploy.json -e I2T_PreProd
+   echo 'PreProd flow deployed'
+  displayName: 'Run Workflow in PreProd'
+
+- script: |
+   ctm env del I2T_PreProd
+   echo 'PreProd environment successfully removed'
+  displayName: 'Remove PreProd environment'
