@@ -1,0 +1,30 @@
+{
+  "DeployDescriptor":
+  [
+    {
+      "Property" : "ControlmServer",
+      "Assign"   : "cirrocumulus"
+    },
+    {
+      "Property" : "Application",
+      "Replace"  : [ {"RJA_API_Jobs(.*)" : "RJA_Azure_Deploy$1"} ]
+    },
+    {
+      "Property" : "SubApplication",
+      "Replace"  : [ {"rjacobs(.*)" : "RJA_Azure_Flow$1"} ]
+    },
+    {
+      "ApplyOn"  :  {"Type":"Folder"},
+      "Property" : "@",
+      "Replace"  : [ {"RJA_Normal(.*)" : "RJA_AzureFlow$1"} ]
+    },
+    {
+      "Property" : "RunAs",
+      "Replace"  : [ {"rjacobs@adprod.bmc.com(.*)" : "ctmserver"} ]
+    },
+    {
+      "Property" : "Host",
+      "Replace"  : [ {"runner2.tlvlab.ctm.bmc.com(.*)" : "ctmserver"} ]
+    }
+  ]
+}
