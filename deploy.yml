@@ -35,7 +35,7 @@ steps:
   displayName: 'Validate Workflow in PreProd'
 
 - script: |
-   ctm run module3.json azuredeploy.json -e I2T_PreProd
+   ctm run module3.json azureDeploy.json -e I2T_PreProd
    echo 'PreProd flow deployed'
   displayName: 'Run Workflow in PreProd'
 
