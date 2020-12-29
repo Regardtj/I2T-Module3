@@ -5,7 +5,7 @@
 		"Host": "cirrocumulus",
 		"RunAs": "ctmserver",
 		"ControlmServer": "cirrocumulus",
-		"CreatedBy": "Reggie's"
+		"CreatedBy": "Reggie"
 	},
 
   "RJA_AzureFlow": {
