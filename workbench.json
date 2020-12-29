@@ -26,7 +26,6 @@
     ],
     "OrderMethod": "Manual",
     "ActiveRetentionPolicy": "CleanEndedOK",
-    "SiteStandard": "RJA_Azure", 
     "When": {
       "RuleBasedCalendars": {
         "Included": [
