@@ -1,7 +1,7 @@
 {
 	"Defaults": {
-		"Application": "RJA_Azure_Deploy",
-		"SubApplication": "RJA_Azure_Flow",
+		"Application": "RJA_Workbench",
+		"SubApplication": "RJA_Workbench_Flow",
 		"Host": "workbench",
 		"RunAs": "workbench",
 		"ControlmServer": "workbench",
